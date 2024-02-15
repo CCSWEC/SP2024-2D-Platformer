@@ -1,21 +1,34 @@
 #include <SFML/Graphics.hpp>
+#include "player.cpp"
 
 int main()
 {
-    auto window = sf::RenderWindow{ { 1920u, 1080u }, "CMake SFML Project" };
-    window.setFramerateLimit(144);
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
 
+    sf::RenderWindow window(sf::VideoMode(800, 600), "My window", sf::Style::Default, settings);
+
+    Player p(window);
+
+    // run the program as long as the window is open
     while (window.isOpen())
     {
-        for (auto event = sf::Event{}; window.pollEvent(event);)
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
         {
+            // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
-            {
                 window.close();
-            }
         }
+        // clear the window with black color
+        window.clear(sf::Color::Black);
 
-        window.clear();
+        p.draw();
+        p.update();
+
         window.display();
     }
+
+    return 0;
 }
