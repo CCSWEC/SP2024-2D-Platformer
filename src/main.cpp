@@ -1,5 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include "player.cpp"
+// #include "scene/*.cpp"
+#include "player.cpp" 
+#include "tyler.cpp"
+#include "josh_b.cpp"
+#include "hudhair.cpp"
+#include "luc.cpp"
 
 int main()
 {
@@ -9,6 +14,11 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window", sf::Style::Default, settings);
 
     Player p(window);
+    Tyler t(window);
+    JoshB j(window);
+    Hudhair h(window);
+    Luc l(window);
+
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -24,8 +34,8 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        p.draw();
         p.update();
+        p.draw();
 
         window.display();
     }
