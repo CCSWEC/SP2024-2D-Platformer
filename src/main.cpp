@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-// #include "scene/*.cpp"
+// #include "scene/*.hpp"
 #include "player.cpp" 
 #include "tyler.cpp"
 #include "josh_b.cpp"
