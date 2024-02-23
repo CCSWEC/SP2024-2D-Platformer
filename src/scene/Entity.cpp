@@ -1,4 +1,5 @@
 #include "Entity.hpp"
+#include "Component.hpp"
 #include <algorithm>
 #include <vector>
 

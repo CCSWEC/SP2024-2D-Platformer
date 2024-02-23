@@ -20,7 +20,7 @@ add_executable(CMakeSFMLProject
     src/scene/Component.cpp
     src/scene/Entity.cpp
 )
-target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics)
+target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics sfml-window sfml-system)
 target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)
 
 if(WIN32)
