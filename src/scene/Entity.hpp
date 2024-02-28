@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 
 namespace Platformer2D
