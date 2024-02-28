@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
 // #include "scene/*.hpp"
-#include "player.hpp" 
-#include "tyler.hpp"
-#include "josh_b.hpp"
-#include "hudhair.hpp"
-#include "luc.hpp"
+#include "player.cpp" 
+#include "tyler.cpp"
+#include "josh_b.cpp"
+#include "hudhair.cpp"
+#include "luc.cpp"
 
 int main()
 {
