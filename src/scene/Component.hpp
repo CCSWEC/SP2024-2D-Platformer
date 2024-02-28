@@ -1,7 +1,9 @@
-#include "Entity.hpp"
+#pragma once
 
 namespace Platformer2D
 {
+
+class Entity;
 
 class Component
 {

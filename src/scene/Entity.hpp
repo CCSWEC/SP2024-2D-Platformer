@@ -1,8 +1,11 @@
+#pragma once
+
 #include <vector>
-#include "Component.hpp"
 
 namespace Platformer2D
 {
+
+class Component;
 
 /**
  * @brief Abstract base class for every scene entity
@@ -51,7 +54,7 @@ class Entity {
          * Components are objects that add update logic
          * @returns The vector of Components attached to this Entity
         */
-        vector<Component*> getComponents();
+        std::vector<Component*> getComponents();
 
         /**
          * @brief Attach a Component to this Entity

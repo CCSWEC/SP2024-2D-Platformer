@@ -1,4 +1,5 @@
 #include "Component.hpp"
+#include "Entity.hpp"
 
 namespace Platformer2D
 {
