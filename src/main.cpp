@@ -34,9 +34,16 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        p.update();
-        p.draw();
-
+        //p.update();
+        t.update();
+        //j.update();
+        //h.update();
+        //l.update();
+        //p.draw();
+        t.draw();
+        //j.draw();
+        //h.draw();
+        //l.draw();    
         window.display();
     }
 
