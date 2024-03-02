@@ -8,6 +8,8 @@ using namespace std;
 namespace Platformer2D
 {
 
+Entity::Entity() { }
+
 void Entity::update()
 {
     for(auto component : getComponents())

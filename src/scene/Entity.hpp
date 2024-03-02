@@ -13,6 +13,11 @@ class Component;
 class Entity {
     public:
         /**
+         * @brief Create a new Entity
+        */
+        Entity();
+
+        /**
          * @brief Update all Components on this Entity, and then update all child entities
         */
         void update();
