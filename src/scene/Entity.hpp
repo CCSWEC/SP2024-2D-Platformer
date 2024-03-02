@@ -70,6 +70,10 @@ class Entity {
         */
         void removeComponent(Component* component);
 
+        /**
+         * @brief Find a component of the given type, if one is attached
+         * @returns The found component
+        */
         template<typename T>
         T* findComponent();
 
