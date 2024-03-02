@@ -1,24 +1,16 @@
 #include <SFML/Graphics.hpp>
 // #include "scene/*.hpp"
 #include "player.cpp" 
-#include "tyler.cpp"
-#include "josh_b.cpp"
-#include "hudhair.cpp"
-#include "luc.cpp"
+
 
 int main()
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
 
     Player p(window);
-    Tyler t(window);
-    JoshB j(window);
-    Hudhair h(window);
-    Luc l(window);
-
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -34,16 +26,10 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        //p.update();
-        t.update();
-        //j.update();
-        //h.update();
-        //l.update();
-        //p.draw();
-        t.draw();
-        //j.draw();
-        //h.draw();
-        //l.draw();    
+        p.update();
+
+        p.draw();
+ 
         window.display();
     }
 
