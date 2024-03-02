@@ -8,7 +8,7 @@ namespace Platformer2D
 class Component;
 
 /**
- * @brief Abstract base class for every scene entity
+ * @brief Class representing a scene entity with attached Components 
 */
 class Entity {
     public:
