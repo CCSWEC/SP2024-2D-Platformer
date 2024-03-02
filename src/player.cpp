@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
-class Player {
+#include "camera.cpp"
+class Player{
 public:
 
-    Player(sf::RenderWindow& window) : window(window), circle(25) {
+    Player(sf::RenderWindow& window, Camera& camera) : window(window), camera(camera), circle(25)  {
         rectangle.setSize(sf::Vector2f(800, 30)); // Set size of the rectangle
         rectangle.setFillColor(sf::Color::Green);  // Set fill color of the rectangle to green
         rectangle.setPosition(0, 570);         // Set position of the rectangle
@@ -15,6 +16,7 @@ public:
         window.draw(circle);
         window.draw(rectangle);
     }
+
     void update() {
         circle.move(0, velocity);
 
@@ -68,15 +70,20 @@ public:
         if (position.y + circle.getRadius() * 2 > window.getSize().y)
             position.y = window.getSize().y - circle.getRadius() * 2;
         circle.setPosition(position);
+        camera.followPlayer(circle.getPosition().x);
+
     }
     bool checkCollision(const sf::CircleShape& circle, const sf::RectangleShape& rectangle) {
         return circle.getGlobalBounds().intersects(rectangle.getGlobalBounds());
     }
 private:
     sf::RenderWindow& window;
+    Camera& camera;            
     sf::CircleShape circle;
     sf::RectangleShape rectangle;
     sf::Clock upTimer;
+    sf::View view1;
+
     double velocity=0;
     static constexpr double Gravity = 0.0005f;
     static constexpr float UpwardSpeed = -1.f;

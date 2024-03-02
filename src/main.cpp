@@ -1,8 +1,6 @@
 #include <SFML/Graphics.hpp>
 // #include "scene/*.hpp"
 #include "player.cpp" 
-
-
 int main()
 {
     sf::ContextSettings settings;
@@ -10,7 +8,8 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
 
-    Player p(window);
+    Camera camera(window); // Create Camera object
+    Player p(window, camera); // Pass Camera object to Player constructor
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -27,9 +26,8 @@ int main()
         window.clear(sf::Color::Black);
 
         p.update();
-
         p.draw();
- 
+
         window.display();
     }
 
