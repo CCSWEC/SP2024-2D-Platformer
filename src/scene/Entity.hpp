@@ -70,6 +70,9 @@ class Entity {
         */
         void removeComponent(Component* component);
 
+        template<typename T>
+        T* findComponent();
+
         /**
          * @brief A virtual destructor is required in a base class
         */

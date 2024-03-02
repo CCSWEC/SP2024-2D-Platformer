@@ -74,6 +74,22 @@ void Entity::removeComponent(Component* component)
     components.erase(remove(components.begin(), components.end(), component), components.end());
 }
 
+template<typename T>
+T* Entity::findComponent()
+{
+    for(auto c : getComponents())
+    {
+        T* found = dynamic_cast<T*>(c);
+
+        if(found)
+        {
+            return found;
+        }
+    }
+
+    return nullptr;
+}
+
 void Entity::setParent(Entity* parent)
 {
     this->parent = parent;
