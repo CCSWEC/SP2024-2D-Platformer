@@ -1,16 +1,15 @@
 #include <SFML/Graphics.hpp>
 // #include "scene/*.hpp"
 #include "player.cpp" 
-
-
 int main()
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
-
-    Player p(window);
+    Camera camera(window); // Create Camera object
+    Player p(window, camera); // Pass Camera object to Player constructor
+    sf::Clock clock;
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -25,11 +24,10 @@ int main()
         }
         // clear the window with black color
         window.clear(sf::Color::Black);
-
-        p.update();
-
+        float dt = clock.restart().asSeconds();
+        p.update(dt);
         p.draw();
- 
+
         window.display();
     }
 
