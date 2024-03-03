@@ -6,7 +6,7 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(800, 600), "2D Platformer", sf::Style::Default, settings);
     Camera camera(window); // Create Camera object
     Player p(window, camera); // Pass Camera object to Player constructor
     sf::Clock clock;

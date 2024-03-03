@@ -10,22 +10,22 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(CMakeSFMLProject
+add_executable(Platformer2D
     src/main.cpp
     src/player.cpp
     src/scene/Component.cpp
     src/scene/Entity.cpp
     src/scene/components/Transform.cpp
 )
-target_link_libraries(CMakeSFMLProject PRIVATE sfml-graphics sfml-window sfml-system)
-target_compile_features(CMakeSFMLProject PRIVATE cxx_std_17)
+target_link_libraries(Platformer2D PRIVATE sfml-graphics sfml-window sfml-system)
+target_compile_features(Platformer2D PRIVATE cxx_std_17)
 
 if(WIN32)
     add_custom_command(
-        TARGET CMakeSFMLProject
+        TARGET Platformer2D
         COMMENT "Copy OpenAL DLL"
         PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${SFML_SOURCE_DIR}/extlibs/bin/$<IF:$<EQUAL:${CMAKE_SIZEOF_VOID_P},8>,x64,x86>/openal32.dll $<TARGET_FILE_DIR:CMakeSFMLProject>
         VERBATIM)
 endif()
 
-install(TARGETS CMakeSFMLProject)
+install(TARGETS Platformer2D)
