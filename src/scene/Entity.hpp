@@ -80,7 +80,20 @@ class Entity {
          * @returns The found component
         */
         template<typename T>
-        T* findComponent();
+        T* findComponent()
+        {
+            for(auto c : getComponents())
+            {
+                T* found = dynamic_cast<T*>(c);
+
+                if(found)
+                {
+                    return found;
+                }
+            }
+
+            return nullptr;
+        }
 
         /**
          * @brief A virtual destructor is required in a base class

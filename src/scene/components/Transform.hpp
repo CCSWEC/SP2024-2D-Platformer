@@ -19,6 +19,11 @@ class Transform : public Component
         Transform();
 
         /**
+         * @brief Create a new Transform that is a copy of another Transform
+        */
+        Transform(const Transform& other);
+
+        /**
          * @brief Create a new Transform at the given position with unit scaling and no rotation
          * @param position The position for the Transform
          * @returns The new Transform
@@ -54,19 +59,19 @@ class Transform : public Component
          * @brief Get the position of this Transform
          * @returns The position, relative to the parent transform, if any
         */
-        sf::Vector2<int> getPosition();
+        sf::Vector2<int> getPosition() const;
 
         /**
          * @brief Get the scale of this Transform
          * @returns The scale, relative to the parent transform, if any
         */
-        sf::Vector2<double> getScale();
+        sf::Vector2<double> getScale() const;
 
         /**
          * @brief Get the rotation of this Transform
          * @returns The rotation, relative to the parent transform, if any
         */
-        double getRotation();
+        double getRotation() const;
 
         /**
          * @brief Set the position of this Transform
@@ -88,6 +93,15 @@ class Transform : public Component
          * @param scale The new relative rotation in radians
         */
         void setRotation(double rotation);
+
+        /**
+         * @brief Resolve the absolute transform
+         * Since attached Transforms are usually relative to parent entities,
+         * this method resolves the absolute transform.
+         * Do not attach the returned transform to an Entity.
+         * @returns The absolute transform
+        */
+        Transform absolute();
 
         virtual void update();
 
