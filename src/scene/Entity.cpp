@@ -81,12 +81,4 @@ void Entity::setParent(Entity* parent)
     this->parent = parent;
 }
 
-Entity::~Entity()
-{
-    for(auto child : children)
-    {
-        delete child;
-    }
-}
-
 }

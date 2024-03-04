@@ -13,6 +13,8 @@ FetchContent_MakeAvailable(SFML)
 add_executable(Platformer2D
     src/main.cpp
     src/player.cpp
+    src/components/Ground.cpp
+    src/components/Player.cpp
     src/scene/Component.cpp
     src/scene/Entity.cpp
     src/scene/components/Transform.cpp

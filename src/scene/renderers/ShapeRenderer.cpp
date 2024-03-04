@@ -1,5 +1,6 @@
 #include "ShapeRenderer.hpp"
 #include "../components/renderables/ShapeRenderable.hpp"
+#include "../components/Transform.hpp"
 
 using namespace sf;
 
@@ -23,7 +24,17 @@ void ShapeRenderer::render(Entity* entity)
     ShapeRenderable* renderable = entity->findComponent<ShapeRenderable>();
 
     if(renderable)
+    {
+        Transform* transform = entity->findComponent<Transform>();
+
+        if(transform)
+        {
+            auto position = transform->absolute().getPosition();
+            renderable->getShape()->setPosition(position.x, position.y);
+        }
+
         window->draw(*renderable->getShape());
+    }
 
     for(auto child : entity->getChildren())
         render(child);

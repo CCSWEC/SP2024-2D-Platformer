@@ -94,11 +94,6 @@ class Entity {
 
             return nullptr;
         }
-
-        /**
-         * @brief A virtual destructor is required in a base class
-        */
-        virtual ~Entity();
     
     private:
         /**
