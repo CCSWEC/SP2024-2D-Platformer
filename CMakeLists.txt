@@ -16,6 +16,8 @@ add_executable(Platformer2D
     src/scene/Component.cpp
     src/scene/Entity.cpp
     src/scene/components/Transform.cpp
+    src/scene/components/renderables/ShapeRenderable.cpp
+    src/scene/renderers/ShapeRenderer.cpp
 )
 target_link_libraries(Platformer2D PRIVATE sfml-graphics sfml-window sfml-system)
 target_compile_features(Platformer2D PRIVATE cxx_std_17)
