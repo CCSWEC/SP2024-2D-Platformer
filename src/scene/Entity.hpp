@@ -8,10 +8,15 @@ namespace Platformer2D
 class Component;
 
 /**
- * @brief Abstract base class for every scene entity
+ * @brief Class representing a scene entity with attached Components 
 */
 class Entity {
     public:
+        /**
+         * @brief Create a new Entity
+        */
+        Entity();
+
         /**
          * @brief Update all Components on this Entity, and then update all child entities
         */
@@ -71,9 +76,24 @@ class Entity {
         void removeComponent(Component* component);
 
         /**
-         * @brief A virtual destructor is required in a base class
+         * @brief Find a component of the given type, if one is attached
+         * @returns The found component
         */
-        virtual ~Entity();
+        template<typename T>
+        T* findComponent()
+        {
+            for(auto c : getComponents())
+            {
+                T* found = dynamic_cast<T*>(c);
+
+                if(found)
+                {
+                    return found;
+                }
+            }
+
+            return nullptr;
+        }
     
     private:
         /**

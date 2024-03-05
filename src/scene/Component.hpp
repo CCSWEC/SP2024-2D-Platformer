@@ -5,6 +5,9 @@ namespace Platformer2D
 
 class Entity;
 
+/**
+ * @brief Abstract base class for components that can be attached to Entities
+*/
 class Component
 {
     public:

@@ -8,6 +8,8 @@ using namespace std;
 namespace Platformer2D
 {
 
+Entity::Entity() { }
+
 void Entity::update()
 {
     for(auto component : getComponents())
@@ -77,14 +79,6 @@ void Entity::removeComponent(Component* component)
 void Entity::setParent(Entity* parent)
 {
     this->parent = parent;
-}
-
-Entity::~Entity()
-{
-    for(auto child : children)
-    {
-        delete child;
-    }
 }
 
 }
