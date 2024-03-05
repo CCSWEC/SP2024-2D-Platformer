@@ -28,7 +28,7 @@ class Transform : public Component
          * @param position The position for the Transform
          * @returns The new Transform
         */
-        Transform(sf::Vector2<int> position);
+        Transform(sf::Vector2f position);
 
         /**
          * @brief Create a new Transform at the given position with the given scaling and no rotation
@@ -36,7 +36,7 @@ class Transform : public Component
          * @param scale The scaling vector for the Transform
          * @returns The new Transform
         */
-        Transform(sf::Vector2<int> position, sf::Vector2<double> scale);
+        Transform(sf::Vector2f position, sf::Vector2f scale);
 
         /**
          * @brief Create a new Transform at the given position with the given scaling and the given rotation
@@ -45,7 +45,7 @@ class Transform : public Component
          * @param rotation The rotation in radians for the given Transform
          * @returns The new Transform
         */
-        Transform(sf::Vector2<int> position, sf::Vector2<double> scale, double rotation);
+        Transform(sf::Vector2f position, sf::Vector2f scale, double rotation);
 
         /**
          * @brief Create a new Transform at the given position with unit scaling and the given rotation
@@ -53,19 +53,19 @@ class Transform : public Component
          * @param rotation The rotation in radians for the given Transform
          * @returns The new Transform
         */
-        Transform(sf::Vector2<int> position, double rotation);
+        Transform(sf::Vector2f position, double rotation);
 
         /**
          * @brief Get the position of this Transform
          * @returns The position, relative to the parent transform, if any
         */
-        sf::Vector2<int> getPosition() const;
+        sf::Vector2f getPosition() const;
 
         /**
          * @brief Get the scale of this Transform
          * @returns The scale, relative to the parent transform, if any
         */
-        sf::Vector2<double> getScale() const;
+        sf::Vector2f getScale() const;
 
         /**
          * @brief Get the rotation of this Transform
@@ -78,14 +78,14 @@ class Transform : public Component
          * Sets the relative position with respect to the parent transform, if any.
          * @param position The new relative position
         */
-        void setPosition(sf::Vector2<int> position);
+        void setPosition(sf::Vector2f position);
 
         /**
          * @brief Set the scale of this Transform
          * Sets the relative scale with respect to the parent transform, if any.
          * @param scale The new relative scale
         */
-        void setScale(sf::Vector2<double> scale);
+        void setScale(sf::Vector2f scale);
 
         /**
          * @brief Set the rotation in radians of this Transform
@@ -110,13 +110,13 @@ class Transform : public Component
          * @brief The position vector of this Transform
          * This field expresses the position relative to the parent transform, if any.
         */
-        sf::Vector2<int> position;
+        sf::Vector2f position;
 
         /**
          * @brief The scaling vector of this Transform
          * This field expresses the scale relative to the parent transform, if any.
         */
-        sf::Vector2<double> scale;
+        sf::Vector2f scale;
 
         /**
          * @brief The rotation in radians of this Transform
