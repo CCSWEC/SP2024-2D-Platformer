@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include "camera.cpp"
 class Player {
 public:
 
-    Player(sf::RenderWindow& window) : window(window), circle(25) {
+    Player(sf::RenderWindow& window, Camera& camera) : window(window), camera(camera), circle(25) {
         rectangle.setSize(sf::Vector2f(800, 30)); // Set size of the rectangle
         rectangle.setFillColor(sf::Color::Green);  // Set fill color of the rectangle to green
         rectangle.setPosition(0, 570);         // Set position of the rectangle
@@ -15,71 +16,60 @@ public:
         window.draw(circle);
         window.draw(rectangle);
     }
-    void update() {
-        circle.move(0, velocity);
-
-        // up key is pressed: move our character up
-        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (velocity == Gravity)) {
-            if (upTimer.getElapsedTime().asSeconds() <= MaxUpwardTime) { 
-                velocity = 0;
-                circle.move(0.f, UpwardSpeed); //Accelerate upwards
-            }
-        } else {
-            upTimer.restart(); // Reset the timer when the key is released
+    void update(float dt) {
+        // resets acceleration when no key is pressed
+        acceleration.x = 0;
+        // up key is pressed: move our character up ( I did it :] )
+        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (!isJumping)) {
+            velocity.y = -JumpVelocity;
+            isJumping = true;
         }
 
-        // a or left-arrow is pressed: move our character left 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            circle.move(-HorizontalSpeed, 0.f);
+            circle.move(-.1f, 0.f);
         }
 
         // d or right-arrow is pressed: move our character right
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            circle.move(HorizontalSpeed, 0.f);
+            circle.move(.1f, 0.f);
         }
 
         // Apply gravity
-        if (circle.getPosition().y <= rectangle.getPosition().y - circle.getRadius() * 2) {
-            velocity += Gravity;
-        } else {
-            circle.setPosition(circle.getPosition().x, rectangle.getPosition().y - circle.getRadius() * 2);
-            velocity = 0;
-        }
+        acceleration.y = Gravity;
 
-        //If collision occurs, handle it here
-        if (checkCollision(circle, rectangle)) {
-            // Move the circle away from the rectangle along the y-axis
-            if (circle.getPosition().y < rectangle.getPosition().y) {
-                circle.setPosition(circle.getPosition().x, rectangle.getPosition().y - circle.getRadius() * 2);
-            } else {
-                circle.setPosition(circle.getPosition().x, rectangle.getPosition().y + rectangle.getSize().y + circle.getRadius() / 2);
+        // Frame rate equation stuff idk lol
+        velocity += acceleration * dt;
+        position += velocity * dt;
+
+        //handles collision here (kinda jank)
+        if (position.y + circle.getRadius() * 2 > rectangle.getPosition().y) {
+            if (position.x + circle.getRadius() < rectangle.getPosition().x || position.x - circle.getRadius() > rectangle.getPosition().x + rectangle.getSize().x) {
+                velocity.y += Gravity * dt;
+            }
+            else {
+                if (position.y + circle.getRadius() * 2 < rectangle.getPosition().y + rectangle.getSize().y) {
+                    position.y = rectangle.getPosition().y - circle.getRadius() * 2;
+                    velocity.y = 0;
+                    isJumping = false;
+                }
             }
         }
-
-        // retrieve the absolute position of the entity
-        sf::Vector2f position = circle.getPosition();
-        //Keeps character in screen bounds
-        if (position.x < 0)
-            position.x = 0;
-        if (position.x + circle.getRadius() * 2 > window.getSize().x)
-            position.x = window.getSize().x - circle.getRadius() * 2;
-        if (position.y < 0)
-            position.y = 0;
-        if (position.y + circle.getRadius() * 2 > window.getSize().y)
-            position.y = window.getSize().y - circle.getRadius() * 2;
+        // Update player position
         circle.setPosition(position);
+        //camera follows player based off of player x value (may add y later, not sure yet)
+        camera.followPlayer(circle.getPosition().x);
     }
-    bool checkCollision(const sf::CircleShape& circle, const sf::RectangleShape& rectangle) {
-        return circle.getGlobalBounds().intersects(rectangle.getGlobalBounds());
-    }
+
 private:
+    bool isJumping = false;
     sf::RenderWindow& window;
+    Camera& camera;
     sf::CircleShape circle;
     sf::RectangleShape rectangle;
-    sf::Clock upTimer;
-    double velocity=0;
-    static constexpr double Gravity = 0.0005f;
-    static constexpr float UpwardSpeed = -1.f;
-    static constexpr float MaxUpwardTime = .125f;
-    static constexpr float HorizontalSpeed = 0.3f;
+    sf::Vector2f position;
+    sf::Vector2f velocity;
+    sf::Vector2f acceleration;
+    static constexpr float HorizontalAcceleration = 1000.f;
+    static constexpr float JumpVelocity = 800.f;
+    static constexpr float Gravity = 2000.f;
 };
