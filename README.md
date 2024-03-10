@@ -49,7 +49,7 @@ Challenges (you do not have to implement these (you can implement one or more) )
   1. Add an xp feature, the more a character levels, the more their base dmg
   2. Add a speedrun option
   3. Add in a boss fight
-  4. Implement a multiplayer feature (2 players max) 
+  4. Implement a multiplayer feature (2 players max)
 
 SFML general tutorials (everything you need to know about sfml and how to use it) https://www.sfml-dev.org/tutorials/2.6/
 

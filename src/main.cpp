@@ -1,16 +1,18 @@
 #include <SFML/Graphics.hpp>
 // #include "scene/*.hpp"
-#include "player.cpp" 
+#include "player.cpp"
+#include "platform.cpp"
 
 
 int main()
 {
     sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
+    settings.antialiasingLevel = 8; 
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Game Window", sf::Style::Default, settings);
 
-    Player p(window);
+    Player john(window);
+    Platform platform_1(window);
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -26,10 +28,12 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        p.update();
+        john.update();
+        platform_1.update();
 
-        p.draw();
- 
+        john.draw();
+        platform_1.draw();
+
         window.display();
     }
 

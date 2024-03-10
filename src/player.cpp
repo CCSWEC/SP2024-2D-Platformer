@@ -8,7 +8,7 @@ public:
         rectangle.setSize(sf::Vector2f(800, 30)); // Set size of the rectangle
         rectangle.setFillColor(sf::Color::Green);  // Set fill color of the rectangle to green
         rectangle.setPosition(0, 570);         // Set position of the rectangle
-    }    
+    }
     void draw() {
         // change the number of sides (points) to 100
         circle.setPointCount(100);
@@ -30,12 +30,12 @@ public:
 
         // a or left-arrow is pressed: move our character left 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            circle.move(-.1f, 0.f);
+            circle.move(-HorizontalSpeed, 0.f);
         }
 
         // d or right-arrow is pressed: move our character right
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            circle.move(.1f, 0.f);
+            circle.move(HorizontalSpeed, 0.f);
         }
 
         // Apply gravity
@@ -81,5 +81,5 @@ private:
     static constexpr double Gravity = 0.0005f;
     static constexpr float UpwardSpeed = -1.f;
     static constexpr float MaxUpwardTime = .125f;
-
+    static constexpr float HorizontalSpeed = 0.3f;
 };
