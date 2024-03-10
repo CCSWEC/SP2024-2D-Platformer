@@ -11,7 +11,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
 
     Camera camera(window); // Create Camera object
-    Player john(window, camera); // Pass Camera object to Player constructor
+    Player player(window, camera); // Pass Camera object to Player constructor
     Platform platform_1(window);
 
     sf::Clock clock;
@@ -31,11 +31,12 @@ int main()
         window.clear(sf::Color::Black);
 
         float dt = clock.restart().asSeconds();
-
-        john.update(dt);
+        
+        player.update(dt);
         platform_1.update(dt);
 
-        john.draw();
+
+        player.draw();
         platform_1.draw();
 
         window.display();

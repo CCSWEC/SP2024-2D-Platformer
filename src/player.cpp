@@ -9,10 +9,11 @@ public:
         rectangle.setSize(sf::Vector2f(800, 30)); // Set size of the rectangle
         rectangle.setFillColor(sf::Color::Green);  // Set fill color of the rectangle to green
         rectangle.setPosition(0, 570);         // Set position of the rectangle
-    }
-    void draw() {
+
         // change the number of sides (points) to 100
         circle.setPointCount(100);
+    }
+    void draw() {
         window.draw(circle);
         window.draw(rectangle);
     }
@@ -41,7 +42,7 @@ public:
         velocity += acceleration * dt;
         position += velocity * dt;
 
-        //handles collision here (kinda jank)
+        // handles collision here (kinda jank)
         if (position.y + circle.getRadius() * 2 > rectangle.getPosition().y) {
             if (position.x + circle.getRadius() < rectangle.getPosition().x || position.x - circle.getRadius() > rectangle.getPosition().x + rectangle.getSize().x) {
                 velocity.y += Gravity * dt;

@@ -12,7 +12,6 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(CMakeSFMLProject
     src/main.cpp
-    src/game.cpp
     src/platform.cpp
     src/player.cpp
     src/scene/Component.cpp
