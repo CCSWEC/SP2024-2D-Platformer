@@ -1,15 +1,6 @@
 # 2D Platformer Game
 
-Requires:
-- CMake extensions with VSCode.
-- gcc compiler set recommended (refer to [MinGW](https://sourceforge.net/projects/mingw/))
-
-Use "CMake: Debug" to debug the code ("run without debugging" if desired, "build", etc).
-
-
-
-
-
+Check the [build instructions document](BUILD_INSTRUCTIONS.md) for setting up your environment and compiling this code.
 
 ---
 We will be using the SFML libary to create a 2d platformer
