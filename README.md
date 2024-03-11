@@ -1,5 +1,11 @@
 # 2D Platformer Game
 
+## Windows Setup
+
+See [the Windows tools page](wintools) for Windows setup instructions.
+
+## Alternate Setup (non-Windows or MinGW)
+
 Requires:
 - CMake extensions with VSCode.
 - gcc compiler set recommended (refer to [MinGW](https://sourceforge.net/projects/mingw/))

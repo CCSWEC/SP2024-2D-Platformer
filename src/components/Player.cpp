@@ -64,12 +64,7 @@ void Player::update()
             }
         }
 
-        transform->setPosition(
-            Vector2<int>(
-                (int)(((float)position.x) + velocity.x),
-                (int)(((float)position.y) + velocity.y)
-            )
-        );
+        transform->setPosition(position + velocity);
     }
 }
 

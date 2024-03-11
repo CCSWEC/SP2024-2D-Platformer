@@ -26,7 +26,7 @@ void Ground::update()
     Transform* transform = getEntity()->findComponent<Transform>();
 
     if(transform)
-        transform->setPosition(sf::Vector2i(0, renderWindow->getSize().y - 30));
+        transform->setPosition(sf::Vector2f(0, renderWindow->getSize().y - 30));
 }
 
 }
