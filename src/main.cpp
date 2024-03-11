@@ -28,18 +28,11 @@ int main()
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
 
-    // sf::RenderWindow window(sf::VideoMode(800, 600), "Game Window", sf::Style::Default, settings);
-
-    // Camera camera(window); // Create Camera object
-    // Player player(window, camera); // Pass Camera object to Player constructor
-    // Platform platform_1(window);
-
-    sf::RenderWindow window(sf::VideoMode(800, 600), "2D Platformer", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "2D Platformer", sf::Style::Default, settings);
     renderWindow = &window;
     ShapeRenderer renderer(&window); // Renderer of SFML Shapes
-    // Camera camera(window); // Create Camera object
-    // Player p(window, camera); // Pass Camera object to Player constructor
     sf::Clock clock;
+
     Entity scene; // Root scene Entity
 
     Entity ground;
@@ -79,7 +72,7 @@ int main()
         window.clear(sf::Color::Black);
 
         // float dt = clock.restart().asSeconds();
-        
+
         // player.update(dt);
         // platform_1.update(dt);
 

@@ -59,7 +59,7 @@ Transform Transform::absolute()
             Transform absoluteParentTransform = parentTransform->absolute();
             return Transform(
                 getPosition() + absoluteParentTransform.getPosition(),
-                Vector2(
+                Vector2<double>(
                     getScale().x * absoluteParentTransform.getScale().x,
                     getScale().y * absoluteParentTransform.getScale().y
                 ),
