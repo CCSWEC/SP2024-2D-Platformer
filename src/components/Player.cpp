@@ -10,7 +10,7 @@ using namespace sf;
 namespace Platformer2D
 {
 
-Player::Player(Entity* ground) : ground(ground), isJumping(false) { }
+Player::Player(Entity* ground) : ground(ground), isJumping(false), zoom(0.75f) { }
 
 void Player::update()
 {
@@ -33,7 +33,7 @@ void Player::update()
     // Apply gravity
     acceleration.y = Gravity;
 
-    // Frame rate equation stuff idk lol
+    // Frame rate equation 
     velocity += acceleration * dt;
 
     Transform* transform = getEntity()->findComponent<Transform>();
@@ -65,7 +65,21 @@ void Player::update()
         }
 
         transform->setPosition(position + velocity);
+
+        // Update the camera view
+        updateView(*renderWindow);
     }
 }
 
+void Player::updateView(sf::RenderWindow& window)
+{
+    Transform* transform = getEntity()->findComponent<Transform>();
+    if (transform) {
+        sf::Vector2f playerPosition = transform->getPosition();
+
+        cameraView.setCenter(playerPosition);
+        cameraView.setSize(window.getDefaultView().getSize() / zoom);
+        window.setView(cameraView);
+    }
+}
 }
