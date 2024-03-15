@@ -81,7 +81,7 @@ scoreText.setFillColor(sf::Color::Red);
 sf::Text healthText;
 //sf::String o2 = "Health: " + std::to_string(cmenu.getHealth());
 sf::String o2 = "Health: " + std::to_string(100);
-scoreText.setFont(font);
+healthText.setFont(font);
 healthText.setString(o2);
 healthText.setCharacterSize(24);
 healthText.setPosition(20, 50);
