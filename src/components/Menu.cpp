@@ -1,3 +1,4 @@
+/*
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Audio.hpp>
@@ -6,7 +7,6 @@
 class Menu
 {
 public:
-//Missing a main menu and a pause menu.
     Menu(sf::RenderWindow& window) : window(window)
     {
         window.draw(rectangle); 
@@ -43,13 +43,11 @@ public:
         scoreText.setString(o1);
         scoreText.setCharacterSize(24);
          scoreText.setPosition(20, 20);
-         scoreText.setFillColor(sf::Color::Red);
           sf::Text healthText;
           sf::String o2 = "Health: " + std::to_string(getHealth());
         healthText.setString(o2);
         healthText.setCharacterSize(24);
-         healthText.setPosition(20, 50);
-         healthText.setFillColor(sf::Color::Red);
+         scoreText.setPosition(20, 50);
         window.draw(rectangle);
         window.draw(scoreText);
         window.draw(healthText);
@@ -61,3 +59,4 @@ public:
     sf::RenderWindow& window;
     sf::RectangleShape rectangle;
 };
+*/
