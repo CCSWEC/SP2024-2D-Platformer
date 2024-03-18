@@ -7,7 +7,7 @@
 #include "components/Ground.hpp"
 //#include "components/Menu.hpp"
 #include "menu.cpp"
-
+#include <iostream>
 using namespace Platformer2D;
 
 /**
@@ -22,7 +22,7 @@ sf::RenderWindow* renderWindow;
 */
 float dt;
 
-int main()
+int main(int arc, char** argv)
 {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
@@ -68,19 +68,21 @@ menu.addComponent(&rectangleRenderable);
 menuTransform.setPosition(sf::Vector2f(330, 60));
 scene.addChild(&menu);
 sf::Font font;
-font.loadFromFile("tuffy.ttf");
+//font.loadFromFile("../../src/tuffy.ttf");
+//std::cout << fontPath;
+ std::string exePath = argv[0];
+    std::string exeDir = exePath.substr(0, exePath.find_last_of("/\\"));
+    std::string fontPath = exeDir + "/../data/tuffy.ttf";
+font.loadFromFile(fontPath);
 sf::Text scoreText;
-//sf::String o1 = "Score: " + std::to_string(cmenu.getScore());
-sf::String o1 = "Score: " + std::to_string(0);
+sf::String o1 = "Score: " + std::to_string(cmenu.getScore());
 scoreText.setFont(font);
 scoreText.setString(o1);
 scoreText.setCharacterSize(24);
 scoreText.setPosition(20, 20);
 scoreText.setFillColor(sf::Color::Red);
-
 sf::Text healthText;
-//sf::String o2 = "Health: " + std::to_string(cmenu.getHealth());
-sf::String o2 = "Health: " + std::to_string(100);
+sf::String o2 = "Health: " + std::to_string(cmenu.getHealth());
 healthText.setFont(font);
 healthText.setString(o2);
 healthText.setCharacterSize(24);
@@ -115,6 +117,8 @@ healthText.setFillColor(sf::Color::Red);
         scene.update();
         renderer.render(&scene);
         //Test
+     scoreText.setString("Score: " + std::to_string(cmenu.getScore()));
+     healthText.setString("Health: " + std::to_string(cmenu.getHealth()));
     window.draw(scoreText);
    window.draw(healthText);
         //Test

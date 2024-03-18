@@ -6,7 +6,7 @@
 class Menu
 {
 public:
-//Missing a main menu and a pause menu.
+//Missing a main menu and a pause menu, only including the text and box.
     Menu(sf::RenderWindow& window) : window(window)
     {
         window.draw(rectangle); 

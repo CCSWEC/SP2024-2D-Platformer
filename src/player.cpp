@@ -23,7 +23,7 @@ public:
         if ((sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) && (!isJumping)) {
             velocity.y = -JumpVelocity; 
             isJumping = true;
-        } 
+        }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             acceleration.x = -HorizontalAcceleration;// a or left-arrow is pressed: accelerate our character left
@@ -46,9 +46,9 @@ public:
                 velocity.y += Gravity * dt;
             } else {      
                 if (position.y + circle.getRadius() * 2 < rectangle.getPosition().y + rectangle.getSize().y){    
-                position.y = rectangle.getPosition().y - circle.getRadius() * 2;
-                velocity.y = 0;
-                isJumping = false;
+                    position.y = rectangle.getPosition().y - circle.getRadius() * 2;
+                    velocity.y = 0;
+                    isJumping = false;
                 }
             }
         }
@@ -60,6 +60,7 @@ public:
 
 private:
     bool isJumping = false;
+    bool jumpTimeout = false;
     sf::RenderWindow& window;
     Camera& camera;
     sf::CircleShape circle;

@@ -27,7 +27,7 @@ void Player::update()
     } else if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right)) {
         acceleration.x = HorizontalAcceleration;// d or right-arrow is  pressed: accelerate our character right
     } else {
-        velocity.x = 0;// velocity set to 0 if no keys pressed
+        velocity.x = 0; // velocity set to 0 if no keys pressed
     }
 
     // Apply gravity
@@ -38,18 +38,15 @@ void Player::update()
 
     Transform* transform = getEntity()->findComponent<Transform>();
     
-    if(transform)
-    {
+    if(transform) {
         auto position = transform->getPosition();
 
         ShapeRenderable* groundRenderable = ground->findComponent<ShapeRenderable>();
 
-        if(groundRenderable)
-        {
+        if(groundRenderable) {
             RectangleShape* rectangle = dynamic_cast<RectangleShape*>(groundRenderable->getShape());
 
-            if(rectangle)
-            {
+            if(rectangle) {
                 if (position.y + 25 * 2 > rectangle->getPosition().y) {
                     if (position.x + 25 < rectangle->getPosition().x || position.x - 25 > rectangle->getPosition().x + rectangle->getSize().x) {
                         velocity.y += Gravity * dt;
