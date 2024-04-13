@@ -59,13 +59,13 @@ Menu cmenu(window);
 Transform menuTransform;
 menu.addComponent(&menuTransform);
 sf::RectangleShape rectangle;
-rectangle.setSize(sf::Vector2f(100, 60));
+rectangle.setSize(sf::Vector2f(130, 80));
 rectangle.setFillColor(sf::Color::White);
 rectangle.setOutlineColor(sf::Color::Blue);
 rectangle.setOutlineThickness(2);
 ShapeRenderable rectangleRenderable(&rectangle);
 menu.addComponent(&rectangleRenderable);
-menuTransform.setPosition(sf::Vector2f(330, 60));
+menuTransform.setPosition(sf::Vector2f(10, 15));
 scene.addChild(&menu);
 sf::Font font;
 //font.loadFromFile("../../src/tuffy.ttf");
@@ -88,16 +88,6 @@ healthText.setString(o2);
 healthText.setCharacterSize(24);
 healthText.setPosition(20, 50);
 healthText.setFillColor(sf::Color::Red);
-//Testing */
-/*
-  if(!font.loadFromFile("arial.ttf"))
-    {
-     return EXIT_FAILURE;
-    }
-    sf::Text text("Hello", font, 24);
-    text.setPosition(20, 50);
-    text.setFillColor(sf::Color::Red);
-    */
     // run the program as long as the window is open
     while (window.isOpen())
     {
